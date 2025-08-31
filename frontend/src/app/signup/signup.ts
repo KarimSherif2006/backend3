@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   imports: [FormsModule, CommonModule]
 })
 export class SignupComponent {
-  user = { username: '', email: '', password: '' };
+  user = { name: '', email: '', password: '' };
   errorMessage = '';
 
   constructor(private authService: AuthService, private router: Router) { }

@@ -4,12 +4,11 @@ const jwt = require("jsonwebtoken");
 
 exports.signup = async (req, res) => {
   try {
-    // The frontend sends 'username', but the model expects 'name'.
-    const { username, email, password, role, phone, address } = req.body;
+    const { name, email, password, role, phone, address } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await User.create({
-      name: username, // Use username from request as name
+      name,
       email,
       password: hashedPassword,
       role,
