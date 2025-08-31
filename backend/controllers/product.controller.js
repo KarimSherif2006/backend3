@@ -2,7 +2,17 @@ const Product = require("../models/product.model");
 
 exports.createProduct = async (req, res) => {
   try {
-    const product = await Product.create(req.body);
+    const { name, description, price, category, sizes, colors, stock, imageUrl } = req.body;
+    const product = await Product.create({
+      name,
+      description,
+      price,
+      category,
+      sizes,
+      colors,
+      stock,
+      imageUrl,
+    });
     res.status(201).json(product);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -30,7 +40,15 @@ exports.getProductById = async (req, res) => {
 
 exports.updateProduct = async (req, res) => {
   try {
-    const product = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const { name, description, price, category, sizes, colors, stock, imageUrl } = req.body;
+    const product = await Product.findByIdAndUpdate(
+      req.params.id,
+      { name, description, price, category, sizes, colors, stock, imageUrl },
+      { new: true, runValidators: true }
+    );
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
     res.json(product);
   } catch (err) {
     res.status(400).json({ error: err.message });

@@ -5,6 +5,7 @@ require("dotenv").config();
 
 const productRoutes = require("./routes/product.routes");
 const userRoutes = require("./routes/user.routes");
+const cartRoutes = require("./routes/cart.routes");
 
 const app = express();
 app.use(cors());
@@ -13,6 +14,7 @@ app.use(express.json());
 // Routes
 app.use("/products", productRoutes);
 app.use("/users", userRoutes);
+app.use("/cart", cartRoutes);
 
 // MongoDB connection
 mongoose

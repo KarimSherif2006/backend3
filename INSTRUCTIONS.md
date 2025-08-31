@@ -53,7 +53,7 @@ Postman is a great tool for testing APIs. Here's how you can use it to test the 
 *   **Body:** Select `raw` and `JSON`.
     ```json
     {
-      "username": "testuser",
+      "name": "Test User",
       "email": "test@example.com",
       "password": "password123"
     }
@@ -90,10 +90,14 @@ To test this endpoint, you first need to log in as an admin user to get a token.
 *   **Body:** Select `raw` and `JSON`.
     ```json
     {
-      "name": "New Product",
-      "description": "A great new product",
-      "price": 19.99,
-      "imageUrl": "http://example.com/image.jpg"
+      "name": "Classic T-Shirt",
+      "description": "A comfortable and stylish t-shirt.",
+      "price": 24.99,
+      "category": "Men",
+      "sizes": ["S", "M", "L", "XL"],
+      "colors": ["Black", "White", "Gray"],
+      "stock": 100,
+      "imageUrl": "https://via.placeholder.com/280x200"
     }
     ```
 *   **Action:** Click "Send".
